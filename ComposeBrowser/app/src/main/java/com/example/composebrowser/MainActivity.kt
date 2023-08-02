@@ -114,7 +114,7 @@ fun MyWebView(
     viewModel: MainViewModel,
     snackbarHostState: SnackbarHostState
 ) {
-    val webView = RememberWebView()
+    val webView = rememberWebView()
 
     LaunchedEffect(Unit) {
         viewModel.undoSharedFlow.collectLatest {
@@ -145,7 +145,7 @@ fun MyWebView(
 }
 
 @Composable
-fun RememberWebView(): WebView {
+fun rememberWebView(): WebView {
     val context = LocalContext.current
     val webView = remember {
         WebView(context).apply {
