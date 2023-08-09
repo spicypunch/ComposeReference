@@ -26,7 +26,7 @@ class MainViewModel(
     }
 
     fun toggle(uid: Int) {
-        val todo = _items.value.find { todo -> todo.uid == uid }
+        val todo = _items.value.find { it.uid == uid }
         todo?.let {
             viewModelScope.launch {
                 todoRepository.updateTodo(it.copy(isDone = !it.isDone).apply {
@@ -37,7 +37,7 @@ class MainViewModel(
     }
 
     fun delete(uid: Int) {
-        val todo = _items.value.find { todo -> todo.uid == uid }
+        val todo = _items.value.find { it.uid == uid }
         todo?.let {
             viewModelScope.launch {
                 todoRepository.deleteTodo(it)

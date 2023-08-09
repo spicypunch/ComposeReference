@@ -10,6 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.composetodolist.domain.util.TodoAndroidViewModelFactory
+import com.example.composetodolist.ui.main.MainScreen
+import com.example.composetodolist.ui.main.MainViewModel
 import com.example.composetodolist.ui.theme.ComposeTodoListTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,6 +21,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ComposeTodoListTheme {
+                val viewModel: MainViewModel =
+                    viewModel(factory = TodoAndroidViewModelFactory(application))
+
+                MainScreen(viewModel = viewModel)
             }
         }
     }
